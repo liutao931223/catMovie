@@ -12,3 +12,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+src/components/info/schedule/addSchedule.vue
+src/components/info/schedule/scheduleList.vue
