@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 import scheduleStore from "../info/schedule/scheduleStore.js"
+import movieStore from "../info/movie/store/movieStore.js"
+
 export default new Vuex.Store({
 	modules:{
-		scheduleStore
+		scheduleStore,
+        movieStore
 	}
 })

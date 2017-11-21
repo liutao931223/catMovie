@@ -38,10 +38,12 @@
             v-model="synopsis" placeholder="请输入内容"></el-input>
         </div> 
         <el-button type="primary">确认添加并进入图片编辑页</el-button>
-        <el-button type="primary">重置</el-button>
+        <el-button type="primary" @click="reset">重置</el-button>
     </div>
 </template>
+
 <script>
+import { mapState,mapGetters,mapMutations } from 'Vuex'
 export default {
   data() {
     return {
@@ -62,7 +64,10 @@ export default {
           label: '上映'
         }] 
     }
-  }
+  },
+  methods: {
+      ...mapMutations(['reset'])
+    }
 }
 </script>
 <style>
