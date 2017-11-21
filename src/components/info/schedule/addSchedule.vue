@@ -18,11 +18,6 @@
 <script>
 export default {
   name: "addschedule",
-  data(){
-  	return {
-  		
-  	}
-  },
   methods: {
    
   }
