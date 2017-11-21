@@ -37,8 +37,7 @@
 				          <span>排片管理</span>
 				        </template>
 				        <el-menu-item-group>
-			          		<el-menu-item index="">排片列表</el-menu-item>
-				          	<el-menu-item index="">增加排片</el-menu-item>
+				          	<el-menu-item index="/info/addSchedule">增加排片</el-menu-item>
 			        	</el-menu-item-group>		        			        
 			      </el-submenu>
 			    </el-menu>
