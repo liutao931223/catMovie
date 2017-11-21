@@ -3,19 +3,36 @@ import Router from 'vue-router'
 import Info from '@/components/info/info.vue'
 import Login from '@/components/login/login.vue'
 import Reg from '@/components/reg/reg.vue'
-import AddMovie from '../components/info/movie/addMovie/addMovie.vue'
-import MovieList from '../components/info/movie/movieList/movieList.vue'
-import AddStudio from '../components/info/studio/addStudio/addStudio.vue'
-import StudioList from '../components/info/studio/studioList/studioList.vue'
+import AddMovie from '../components/info/movie/addMovie.vue'
+import MovieList from '../components/info/movie/movieList.vue'
+import AddStudio from '../components/info/studio/addStudio.vue'
+import StudioList from '../components/info/studio/studioList.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/info',
       name: 'info',
-      component: Info
+      component: Info,
+      children: [
+        {
+          path: 'addMovie',
+          component: AddMovie
+        },
+        {
+          path: 'movieList',
+          component: MovieList
+        },{
+          path: 'addStudio',
+          component: AddStudio
+        },
+        {
+          path: 'studioList',
+          component: StudioList
+        }
+      ]
     },{
       path: '/login',
       name: 'login',
@@ -24,22 +41,6 @@ export default new Router({
       path: '/reg',
       name: 'reg',
       component: Reg
-    },{
-      path: '/addMovie',
-      name: 'addMovie',
-      component: AddMovie
-    },{
-      path: '/movieList',
-      name: 'movieList',
-      component: MovieList
-    },{
-      path: '/addStudio',
-      name: 'addStudio',
-      component: AddStudio
-    },{
-      path: '/studioList',
-      name: 'studioList',
-      component: StudioList
-    },
+    }
   ]
 })
