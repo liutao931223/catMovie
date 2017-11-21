@@ -1,4 +1,4 @@
-export default new Vuex.Store({
+export default{
     state: {
         reset(state){
            console.log('in'); 
@@ -10,4 +10,4 @@ export default new Vuex.Store({
     actions: {
 
     }
-})
+}
