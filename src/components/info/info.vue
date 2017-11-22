@@ -40,6 +40,16 @@
 				          	<el-menu-item index="/info/addSchedule">增加排片</el-menu-item>
 			        	</el-menu-item-group>		        			        
 			      </el-submenu>
+			         <el-submenu index="4">
+				        <template slot="title">
+				          <i class="el-icon-location"></i>
+				          <span>资讯管理</span>
+				        </template>
+			        <el-menu-item-group>
+			        	<el-menu-item index="/info/addNews">添加资讯</el-menu-item>
+			          	<el-menu-item index="/info/newsList">资讯列表</el-menu-item>
+			        </el-menu-item-group>			        
+			      </el-submenu>
 			    </el-menu>
 			</el-aside>
 				<el-main>
