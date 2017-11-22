@@ -11,6 +11,8 @@ import AddTheater from '../components/info/theater/addTheater.vue'
 import TheaterList from '../components/info/theater/theaterList.vue'
 import ScheduleList from "../components/info/schedule/scheduleList.vue"
 import AddSchedule from "../components/info/schedule/addSchedule.vue"
+import AddNews from "../components/info/news/addNews.vue"
+import NewsList from "../components/info/news/newsList.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +52,14 @@ export default new Router({
         {
           path: 'addSchedule',
           component: AddSchedule
+        },
+        {
+          path: 'addNews',
+          component: AddNews
+        },
+        {
+          path: 'newsList',
+          component: NewsList
         }
       ]
     },{
