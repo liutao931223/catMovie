@@ -31,6 +31,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+       "/users/**": {
+        target: "http://127.0.0.1:3001",
+        secure: false,
+        changeOrigin: true
+        },
         "/schedules/**":{
             target:"http://127.0.0.1:3001",
             secure:false,
