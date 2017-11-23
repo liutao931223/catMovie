@@ -68,7 +68,7 @@ export default {
       scoring: '',
       options: [{
         state: 0,
-        label: '下映'
+        label: '热映'
       }, {
         state: 1,
         label: '上映'
@@ -119,6 +119,9 @@ export default {
       if(this.movieId){
         this.changeMovies(this.$data)
         this.reset()
+        this.$router.push({
+          path:`/info/movieList`
+        })
         this.disab = true
       }else{
         this.addMovies(this.$data)
