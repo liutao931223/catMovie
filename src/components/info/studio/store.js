@@ -33,8 +33,8 @@ export default {
         async addStudio(context,text){
             const {name,address} = text
             const {data} = await axios.post("/studios/addStudio",{
-                    name,
-                    address
+                name,
+                address
             })
         },
         //修改影院

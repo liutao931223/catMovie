@@ -42,6 +42,7 @@
                 }else{
                     console.log("添加")
                     this.addStudio(this.$data)
+                    
                 }
             },
             ...mapActions("studioStore",["addStudio","updateStudio2"])

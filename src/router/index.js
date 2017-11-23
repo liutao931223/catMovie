@@ -63,6 +63,7 @@ export default new Router({
         {
           path: 'seatList',
           component: SeatList
+        },{
           path: 'addNews',
           component: AddNews
         },
