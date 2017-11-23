@@ -36,6 +36,16 @@ module.exports = {
             secure:false,
             changeOrigin:true
         },
+        "/movies/**":{
+            target:"http://127.0.0.1:3001",
+            secure:false,
+            changeOrigin:true
+        },
+        "/imgs/**":{
+            target:"http://127.0.0.1:3001",
+            secure:false,
+            changeOrigin:true
+        },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

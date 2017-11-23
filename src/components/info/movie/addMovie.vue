@@ -19,12 +19,12 @@
             <label class='labels'>上映时间 格式: 2016-08-23</label><el-input v-model="release" placeholder="请输入上映时间"></el-input>
         </div>
         <div class="box">
-            <label class='labels'>电影状态</label><el-select v-model="status" placeholder="请选择">
+            <label class='labels'>电影状态</label><el-select v-model="state" placeholder="请选择">
                 <el-option
                   v-for="item in options"
-                  :key="item.status"
+                  :key="item.state"
                   :label="item.label"
-                  :value="item.status">
+                  :value="item.state">
                 </el-option>
             </el-select>
         </div>
@@ -37,14 +37,22 @@
             :autosize="{ minRows: 2, maxRows: 4}"
             v-model="synopsis" placeholder="请输入内容"></el-input>
         </div> 
-        <el-button type="primary">确认添加并进入图片编辑页</el-button>
+        <el-button type="primary" @click="getData">确认</el-button>
         <el-button type="primary" @click="reset">重置</el-button>
+          <el-button v-if='disab' type="primary"  @click="intoImg">进入图片编辑页</el-button>
     </div>
 </template>
 
 <script>
-import { mapState,mapGetters,mapMutations } from 'Vuex'
+import {
+  mapState,
+  mapGetters,
+  mapMutations,
+  mapActions
+} from 'vuex'
+
 export default {
+  name: "addMovie",
   data() {
     return {
       cName: '',
@@ -54,20 +62,68 @@ export default {
       duration: '',
       release: '',
       synopsis: '',
-      status: 1,
+      state: 1,
       scoring: '',
       options: [{
-          status: 0,
-          label: '下映'
-        }, {
-          status: 1,
-          label: '上映'
-        }] 
+        state: 0,
+        label: '下映'
+      }, {
+        state: 1,
+        label: '上映'
+      }],
+      disab:false
     }
   },
+  created() {
+      if(this.$route.query.data){
+        let data = this.$route.query.data
+        this.cName = data.cName
+        this.eName = data.eName
+        this.type = data.type
+        this.country = data.country
+        this.duration = data.duration
+        this.release = data.release
+        this.synopsis = data.synopsis
+        this.scoring = data.scoring
+        this.$store.state.movieStore.movieId = data._id
+        this.disab = true
+      }
+  },
+  computed: {
+           ...mapState("movieStore", ['movieId'])
+  },
   methods: {
-      ...mapMutations(['reset'])
+    reset() {
+      this.cName = ''
+      this.eName = ''
+      this.type = ''
+      this.country = ''
+      this.duration = ''
+      this.release = ''
+      this.synopsis = ''
+      this.state = 1
+      this.scoring = ''
+    },
+    intoImg(){
+      this.$router.push({
+               path: '/info/images',
+               query: {
+                 data:this.$store.state.movieStore.movieId
+               }
+             })
+    },
+    ...mapActions("movieStore", ['addMovies','changeMovies']),
+    getData() {
+      if(this.movieId){
+        this.changeMovies(this.$data)
+        this.reset()
+        this.disab = true
+      }else{
+        this.addMovies(this.$data)
+        this.disab = true
+      }
     }
+  }
 }
 </script>
 <style>
@@ -77,5 +133,8 @@ export default {
     }
     .labels{
         margin-right: 10px
+    }
+    .btn{
+      margin-bottom: 20px;
     }
 </style>
