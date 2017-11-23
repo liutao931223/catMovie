@@ -3,11 +3,12 @@
        <el-table
         :data="this.data"
         stripe
-        style="width: 100%">
+        border
+        style="width: 1000px;">
         <el-table-column
           prop="cName"
           label="中文名称"
-          width="180">
+          width="100px">
         </el-table-column>
         <el-table-column
           prop="eName"
@@ -20,11 +21,13 @@
         </el-table-column>
         <el-table-column
           prop="country"
-          label="制片国家/地区">
+          label="制片国家/地区"
+          width="">
         </el-table-column>
         <el-table-column
           prop="duration"
-          label="片长">
+          label="片长"
+          width="100px">
         </el-table-column>
         <el-table-column
           prop="release"
