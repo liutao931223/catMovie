@@ -2,7 +2,7 @@
     <div>
       <el-table
       :data="data"
-      style="width: 1200px">
+      style="width: 1000px">
         <el-table-column
           prop="_id"
           label="编号">
