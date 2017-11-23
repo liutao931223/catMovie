@@ -37,10 +37,11 @@
 		<div class="picDes">
 			<span class="addNewsDes">图片描述</span>
 			<el-input
+				style="width:400px;"
 		  	type="textarea"
 		  	v-model="description"
 		  	@blur="addNewsBlur"
-			  :autosize="{ minRows: 2}"
+			  :autosize="{ minRows: 4}"
 			  placeholder="请输入图片描述">
 			</el-input>
 		</div>
