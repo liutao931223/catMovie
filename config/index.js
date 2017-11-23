@@ -46,6 +46,11 @@ module.exports = {
             secure:false,
             changeOrigin:true
         },
+        "/theaters/**":{
+            target:"http://127.0.0.1:3001",
+            secure:false,
+            changeOrigin:true
+        },
         "/movies/**":{
             target:"http://127.0.0.1:3001",
             secure:false,
