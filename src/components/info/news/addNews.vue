@@ -15,21 +15,23 @@
 			<span class="addNewsDes">资讯标题</span>
 			<el-input
 				style="width:300px;"
-		    suffix-icon="el-icon-document">
-		  </el-input>
+		    	suffix-icon="el-icon-document"
+		    	v-model="title">
+		    </el-input>
 		</div>
 		<div>
 			<el-upload
-				:data="img"
+			  :data="img"
 			  class="upload-demo"
 			  action="/news/upload"
 			  :on-preview="handlePreview"
 			  :on-remove="handleRemove"
+			  :on-success="getImgId"
 			  multiple
 			  :limit="3"
-			  :on-exceed="handleExceed"		  
+			  :on-exceed="handleExceed">		  
 			  <el-button size="small" type="primary">点击添加图片</el-button>
-			  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+			  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb,注意一张图片一个描述，且必须先写描述</div>
 			</el-upload>
 		</div>
 		<div class="picDes">
@@ -76,7 +78,9 @@
         value:"",
         movieId:"",
         description:"",
-        img:{}  
+        title:"",
+        img:{},
+        imgsId:[]  
 	    };
 	  },
 	  mounted() { 	
@@ -86,32 +90,34 @@
 	  },
     methods: {
     	async getMovies(){
-    		const {data} = await axios.get('/movies/getMovies')	
-    		
+    		const {data} = await axios.get('/movies/getMovies')  		
     		return data.data
     	},
     	handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-      handleExceed(files, fileList) {
-        this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-      },
-      changeValue(value){
-      	this.movieId = value
-      },
-      async addNewsBtn(){ 
-      	await axios.post('/news/addNews',{
-      		movieId:this.movieId,
-
-      	})    	
+        	console.log(file, fileList);
+      	},
+      	handlePreview(file) {
+        	console.log(file);
+      	},
+      	handleExceed(files, fileList) {
+        	this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      	},
+      	changeValue(value){
+      		this.movieId = value
+      		this.imgsId = []
+      	},
+      	getImgId(response, file, fileList){
+      		this.imgsId.push(response)
+      	},
+      	async addNewsBtn(){ 
+      	const data = await axios.post('/news/addNews',{
+      			movieId:this.movieId,
+				title: this.title, 
+				imgs:this.imgsId
+      	})	
       },
       addNewsBlur(){
-      	this.img = {
-      		img:JSON.stringify({type:4,description:this.description})
-      	}
+      	this.img.img=JSON.stringify({type:4,description:this.description})
       }
     }
   }
