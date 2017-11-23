@@ -8,6 +8,7 @@ import MovieList from '../components/info/movie/movieList.vue'
 import AddStudio from '../components/info/studio/addStudio.vue'
 import StudioList from '../components/info/studio/studioList.vue'
 import AddTheater from '../components/info/theater/addTheater.vue'
+import SeatList from '../components/info/seat/seatList.vue'
 import TheaterList from '../components/info/theater/theaterList.vue'
 import ScheduleList from "../components/info/schedule/scheduleList.vue"
 import AddSchedule from "../components/info/schedule/addSchedule.vue"
@@ -50,6 +51,10 @@ export default new Router({
         {
           path: 'addSchedule',
           component: AddSchedule
+        },
+        {
+          path: 'seatList',
+          component: SeatList
         }
       ]
     },{
