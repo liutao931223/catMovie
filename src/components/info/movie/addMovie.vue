@@ -117,7 +117,18 @@ export default {
     ...mapActions("movieStore", ['addMovies','changeMovies']),
     getData() {
       if(this.movieId){
-        this.changeMovies(this.$data)
+        this.changeMovies({
+          cName : this.cName ,
+          eName : this.eName ,
+          type : this.type ,
+          country : this.country ,
+          duration : this.duration ,
+          release : this.release ,
+          synopsis : this.synopsis ,
+          state : this.state ,
+          scoring : this.scoring,
+          movieId : this.movieId 
+        })
         this.reset()
         this.$router.push({
           path:`/info/movieList`
