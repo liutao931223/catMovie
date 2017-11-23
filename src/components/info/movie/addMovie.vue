@@ -67,11 +67,11 @@ export default {
       state: 1,
       scoring: '',
       options: [{
-        state: 0,
-        label: '下映'
+        state: 2,
+        label: '即将上映'
       }, {
         state: 1,
-        label: '上映'
+        label: '热映'
       }],
       disab:false
     }
