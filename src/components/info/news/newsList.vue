@@ -14,31 +14,35 @@
 		<el-table
       :data="tableData.data"
       border
-      style="width: 800px;margin-top: 10px">
+      style="width: 1000px;margin: 20px auto 0;">
       <el-table-column
+        align="center"
         prop="movieId.cName"
         label="电影名"
         width="180">
       </el-table-column>
       <el-table-column
+        align="center"
         prop="title"
         label="资讯标题"
         width="180">
       </el-table-column>
       <el-table-column
+        align="center"
         label="图片" width="120" >
         <template slot-scope="scope">
         	<img style="width:100px;height:100px;" v-for="item in scope.row.imgs" :src="'http://127.0.0.1:3001'+item.url" />
         </template>
       </el-table-column>
       <el-table-column
+        align="center"
         prop="description"
         label="图片描述">
         <template slot-scope="scope">
         	<p v-for="item in scope.row.imgs">{{item.description.slice(0,40)}}...</p>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column align="center" label="操作">
       <template slot-scope="scope">
         <el-button
           size="mini"
@@ -51,7 +55,7 @@
 </template>
 <style>
 	.newsListWrap{
-		margin-left: 30px;
+		margin:0 30px;
 	}
 	.newsListDes{
 		width: 100px;
@@ -113,12 +117,15 @@
       				continue;
       			}
       			this.tableData[key] = data[key];
-      		}
-      		
+      		}     		
       	})
       },
-      handleDelete(index, row) {
-        console.log(index, row);
+      async handleDelete(index, row) {      
+        const {data} = await axios.post('/news/delNews',{
+          _id:row._id,
+          status:0
+        })
+        this.changeValue(this.movieId)
       },
       async getNewsByMovieId(){
       	const {data} = await axios.get('/news/getNewsByMovieId',{
