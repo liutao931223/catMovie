@@ -83,9 +83,11 @@
         });
       },   
       async login(){  
-        const {data} = await axios.post("/users/login",{
-          username:this.$refs.username.value,
-          password:this.$refs.password.value  
+        const {data} = await axios.get("/users/login",{
+          params:{
+            username:this.$refs.username.value,
+            password:this.$refs.password.value  
+          }
         })
         if(data.isLogin){
           this.$router.push('/info')

@@ -76,6 +76,10 @@ export default new Router({
       path: '/reg',
       name: 'reg',
       component: Reg
+    },{
+      path: '/',
+      name: 'logins',
+      component: Login
     }
   ]
 })
