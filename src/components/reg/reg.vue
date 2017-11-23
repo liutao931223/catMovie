@@ -147,15 +147,19 @@ export default {
       this.$refs[formName].resetFields();
     },
     async regCheck(){
-    	const {data} = await axios.post("/users/regCheck",{
-    		username:this.$refs.username.value
+    	const {data} = await axios.get("/users/regCheck",{
+    		params:{
+          username:this.$refs.username.value
+        }
 			})  		
 			return data.data[0]
     },
     async reg(){
-    	const {data} = await axios.post("/users/reg",{
-    		username:this.$refs.username.value,
-    		password:this.$refs.password.value
+    	const {data} = await axios.get("/users/reg",{
+    		params:{
+          username:this.$refs.username.value,
+          password:this.$refs.password.value
+        }
     	})
     },
     login(e){
