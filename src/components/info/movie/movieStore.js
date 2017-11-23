@@ -23,7 +23,7 @@ export default{
             for(let i = 0;i < data.data.length;i++){
                 data.data[i].url = 'http://127.0.0.1:3001/'+data.data[i].url
             }
-            this.state.movieStore.img = data.data
+            state.img = data.data
             console.log(this.state.movieStore.img)
         }
     },

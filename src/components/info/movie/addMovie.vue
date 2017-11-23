@@ -67,11 +67,11 @@ export default {
       state: 1,
       scoring: '',
       options: [{
-        state: 0,
-        label: '下映'
+        state: 2,
+        label: '即将上映'
       }, {
         state: 1,
-        label: '上映'
+        label: '热映'
       }],
       disab:false
     }
@@ -117,8 +117,22 @@ export default {
     ...mapActions("movieStore", ['addMovies','changeMovies']),
     getData() {
       if(this.movieId){
-        this.changeMovies(this.$data)
+        this.changeMovies({
+          cName : this.cName ,
+          eName : this.eName ,
+          type : this.type ,
+          country : this.country ,
+          duration : this.duration ,
+          release : this.release ,
+          synopsis : this.synopsis ,
+          state : this.state ,
+          scoring : this.scoring,
+          movieId : this.movieId 
+        })
         this.reset()
+        this.$router.push({
+          path:`/info/movieList`
+        })
         this.disab = true
       }else{
         this.addMovies(this.$data)
