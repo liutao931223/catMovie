@@ -42,7 +42,12 @@
                 }else{
                     console.log("添加")
                     this.addStudio(this.$data)
-                    
+                    alert("保存成功！")
+                    this.$router.push({
+                      path: '/info/studioList', 
+                      component: "StudioList",
+                    })
+
                 }
             },
             ...mapActions("studioStore",["addStudio","updateStudio2"])
