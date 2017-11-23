@@ -31,7 +31,17 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+       "/users/**": {
+            target: "http://127.0.0.1:3001",
+            secure: false,
+            changeOrigin: true
+        },
         "/schedules/**":{
+            target:"http://127.0.0.1:3001",
+            secure:false,
+            changeOrigin:true
+        },
+        "/studios/**":{
             target:"http://127.0.0.1:3001",
             secure:false,
             changeOrigin:true
@@ -42,6 +52,11 @@ module.exports = {
             changeOrigin:true
         },
         "/imgs/**":{
+            target:"http://127.0.0.1:3001",
+            secure:false,
+            changeOrigin:true
+        },
+         "/news/**":{
             target:"http://127.0.0.1:3001",
             secure:false,
             changeOrigin:true

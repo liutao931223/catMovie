@@ -44,12 +44,14 @@
 </template>
 
 <script>
+
 import {
   mapState,
   mapGetters,
   mapMutations,
   mapActions
 } from 'vuex'
+
 
 export default {
   name: "addMovie",
